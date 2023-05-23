@@ -4,5 +4,5 @@ build:
   script:
     - dnf install -y podman
     - podman login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-    - podman build --pull -t "$CI_REGISTRY_IMAGE/os:${tag}" .
-    - podman push "$CI_REGISTRY_IMAGE/os:${tag}"
+    - podman build --pull -t "$CI_REGISTRY_IMAGE/os${tag}" .
+    - podman push "$CI_REGISTRY_IMAGE/os${tag}"
