@@ -3,6 +3,7 @@ build:
   image: docker.io/fedora:rawhide
   script:
     - dnf install -y podman
+    - podman info --debug | grep graphDriverName
     - podman login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - podman build --net host --pull -t "$CI_REGISTRY_IMAGE/os${tag}" .
     - podman push "$CI_REGISTRY_IMAGE/os${tag}"
