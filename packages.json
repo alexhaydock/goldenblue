@@ -18,15 +18,19 @@
                 "libva-utils",
                 "mesa-va-drivers-freeworld",
                 "nvme-cli",
-                "nvtop",
                 "openrgb-udev-rules",
                 "openssl",
                 "podman-compose",
                 "pipewire-codec-aptx",
                 "smartmontools",
                 "tmux",
-                "vim",
-                "zstd"
+                "neovim",
+                "zstd",
+                "git",
+                "fprintd-pam",
+                "glibc-langpack-en",
+                "glibc-langpack-de",
+                "sway"
             ]
         },
         "exclude": {
@@ -39,7 +43,9 @@
                 "libpostproc-free",
                 "libswresample-free",
                 "libswscale-free",
-                "mesa-va-drivers"
+                "mesa-va-drivers",
+                "vim-minimal",
+                "glibc-all-langpacks"
             ]
         }
     },
