@@ -8,5 +8,6 @@ build:
     #- dnf install -y podman
     #- podman info --debug | grep graphDriverName
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-    - docker build --net host --pull -t "$CI_REGISTRY_IMAGE/os${tag}" .
+    #- docker build --net host --pull -t "$CI_REGISTRY_IMAGE/os${tag}" .
+    - docker build --pull -t "$CI_REGISTRY_IMAGE/os${tag}" .
     - docker push "$CI_REGISTRY_IMAGE/os${tag}"
