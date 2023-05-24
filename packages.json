@@ -45,7 +45,8 @@
                 "libswscale-free",
                 "mesa-va-drivers",
                 "vim-minimal",
-                "glibc-all-langpacks"
+                "glibc-all-langpacks",
+                "firefox"
             ]
         }
     },

@@ -1,7 +1,5 @@
 build:
   image: docker:latest
-  services:
-    - docker:dind
   stage: build
   #image: docker.io/fedora:rawhide
   script:
