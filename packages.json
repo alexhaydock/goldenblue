@@ -46,7 +46,9 @@
                 "mesa-va-drivers",
                 "vim-minimal",
                 "glibc-all-langpacks",
-                "firefox"
+                "firefox",
+                "firefox-langpacks",
+                "dmenu"
             ]
         }
     },
