@@ -30,7 +30,8 @@
                 "fprintd-pam",
                 "glibc-langpack-en",
                 "glibc-langpack-de",
-                "sway"
+                "sway",
+                "xdg-user-dirs"
             ]
         },
         "exclude": {
