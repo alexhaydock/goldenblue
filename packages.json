@@ -50,7 +50,8 @@
                 "firefox",
                 "firefox-langpacks",
                 "dmenu",
-                "plymouth"
+                "plymouth",
+                "plymouth-scripts"
             ]
         }
     },
