@@ -49,7 +49,15 @@
                 "glibc-all-langpacks",
                 "firefox",
                 "firefox-langpacks",
-                "dmenu"
+                "dmenu",
+                "plymouth-core-libs",
+                "plymouth-graphics-libs",
+                "plymouth",
+                "plymouth-scripts",
+                "plymouth-plugin-label",
+                "plymouth-plugin-two-step",
+                "plymouth-theme-spinner",
+                "plymouth-system-theme"
             ]
         }
     },
