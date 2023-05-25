@@ -49,9 +49,7 @@
                 "glibc-all-langpacks",
                 "firefox",
                 "firefox-langpacks",
-                "dmenu",
-                "plymouth",
-                "plymouth-scripts"
+                "dmenu"
             ]
         }
     },
