@@ -18,3 +18,6 @@ cp /usr/share/ublue-os/update-services/etc/rpm-ostreed.conf /etc/rpm-ostreed.con
 # move OS systemd unit defaults to /usr
 cp -a --verbose /etc/systemd/system /etc/systemd/user /usr/lib/systemd/
 rm -r /etc/systemd/system /etc/systemd/user
+
+# try to remove dmenu
+rpm-ostree override remove dmenu
