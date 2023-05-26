@@ -32,8 +32,7 @@
                 "glibc-langpack-de",
                 "sway",
                 "xdg-user-dirs",
-                "hunspell-de",
-                "network-manager-applet"
+                "hunspell-de"
             ]
         },
         "exclude": {
@@ -66,8 +65,9 @@
                 "virtualbox-guest-additions",
                 "nano",
                 "nano-default-editor",
-                "fedora-chromium-config"
-
+                "fedora-chromium-config",
+                "tracker",
+                "tracker-miners"
             ]
         }
     },
