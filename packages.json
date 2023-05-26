@@ -32,7 +32,8 @@
                 "glibc-langpack-de",
                 "sway",
                 "xdg-user-dirs",
-                "hunspell-de"
+                "hunspell-de",
+                "NetworkManager-tui"
             ]
         },
         "exclude": {
