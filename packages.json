@@ -67,7 +67,11 @@
                 "nano-default-editor",
                 "fedora-chromium-config",
                 "tracker",
-                "tracker-miners"
+                "tracker-miners",
+                "lvm2",
+                "lvm2-libs",
+                "openssh-server",
+                "chrony"
             ]
         }
     },
