@@ -21,3 +21,7 @@ rm -r /etc/systemd/system /etc/systemd/user
 
 # try to remove dmenu
 rpm-ostree override remove dmenu
+
+ln -sf /usr/share/zoneinfo/Etc/UTC /etc/localtime
+
+authselect enable-feature with-fingerprint
