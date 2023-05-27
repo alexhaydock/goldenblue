@@ -33,7 +33,9 @@
                 "sway",
                 "xdg-user-dirs",
                 "hunspell-de",
-                "NetworkManager-tui"
+                "NetworkManager-tui",
+                "mpv",
+                "fuzzel"
             ]
         },
         "exclude": {
