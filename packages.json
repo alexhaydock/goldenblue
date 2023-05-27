@@ -35,7 +35,8 @@
                 "hunspell-de",
                 "NetworkManager-tui",
                 "mpv",
-                "fuzzel"
+                "fuzzel",
+                "gucharmap"
             ]
         },
         "exclude": {
