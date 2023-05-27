@@ -36,8 +36,7 @@
                 "NetworkManager-tui",
                 "mpv",
                 "fuzzel",
-                "gucharmap",
-                "kitty"
+                "gucharmap"
             ]
         },
         "exclude": {
