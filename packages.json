@@ -37,7 +37,9 @@
                 "mpv",
                 "fuzzel",
                 "gucharmap",
-                "light"
+                "light",
+                "pavucontrol",
+                "wdisplays"
             ]
         },
         "exclude": {
