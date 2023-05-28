@@ -39,7 +39,8 @@
                 "gucharmap",
                 "light",
                 "pavucontrol",
-                "wdisplays"
+                "wdisplays",
+                "virt-manager"
             ]
         },
         "exclude": {
