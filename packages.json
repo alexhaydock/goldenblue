@@ -40,7 +40,8 @@
                 "light",
                 "pavucontrol",
                 "wdisplays",
-                "virt-manager"
+                "virt-manager",
+                "qemu-kvm"
             ]
         },
         "exclude": {
