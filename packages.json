@@ -42,7 +42,8 @@
                 "wdisplays",
                 "virt-manager",
                 "qemu-kvm",
-                "libvirt"
+                "libvirt",
+                "nm-connection-editor"
             ]
         },
         "exclude": {
