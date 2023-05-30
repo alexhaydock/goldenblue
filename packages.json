@@ -43,7 +43,8 @@
                 "virt-manager",
                 "qemu-kvm",
                 "libvirt",
-                "nm-connection-editor"
+                "nm-connection-editor",
+                "network-manager-applet"
             ]
         },
         "exclude": {
