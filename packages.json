@@ -44,7 +44,8 @@
                 "qemu-kvm",
                 "libvirt",
                 "nm-connection-editor",
-                "network-manager-applet"
+                "network-manager-applet",
+                "waybar"
             ]
         },
         "exclude": {
