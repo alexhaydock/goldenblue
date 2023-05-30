@@ -41,7 +41,8 @@
                 "pavucontrol",
                 "wdisplays",
                 "virt-manager",
-                "qemu-kvm"
+                "qemu-kvm",
+                "libvirt"
             ]
         },
         "exclude": {
