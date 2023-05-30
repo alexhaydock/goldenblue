@@ -78,8 +78,6 @@
                 "fedora-chromium-config",
                 "tracker",
                 "tracker-miners",
-                "lvm2",
-                "lvm2-libs",
                 "openssh-server",
                 "chrony",
                 "xorg-x11-server-Xorg",
