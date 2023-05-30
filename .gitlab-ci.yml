@@ -2,8 +2,8 @@ build:
   image: docker:latest
   stage: build
   variables:
-    FEDORA_MAJOR_VERSION: ":38"
+    FEDORA_MAJOR_VERSION: "38"
   script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-    - docker build --pull -t "$CI_REGISTRY_IMAGE/os${FEDORA_MAJOR_VERSION}" .
-    - docker push "$CI_REGISTRY_IMAGE/os${FEDORA_MAJOR_VERSION}"
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}" -f Containerfile
+    - docker push "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}"
