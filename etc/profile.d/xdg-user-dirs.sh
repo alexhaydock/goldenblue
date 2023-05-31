@@ -9,3 +9,5 @@ export GOPATH="$XDG_DATA_HOME"/go
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+
+export HISTFILE="$XDG_STATE_HOME"/bash/history
