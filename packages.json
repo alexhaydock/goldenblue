@@ -45,7 +45,11 @@
                 "libvirt",
                 "nm-connection-editor",
                 "network-manager-applet",
-                "waybar"
+                "waybar",
+                "openconnect",
+                "rclone",
+                "restic",
+                "sshuttle"
             ]
         },
         "exclude": {
