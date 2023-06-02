@@ -1,0 +1,112 @@
+title: Welcome to uPhy
+properties:
+  mode: "run-on-change"
+screens:
+  first-screen:
+    source: yafti.screen.title
+    values:
+      title: "Welcome to uPhy (eternal Alpha)"
+      icon: "/path/to/icon"
+      description: |
+        Pick some applications to get started
+  can-we-modify-your-flatpaks:
+    source: yafti.screen.consent
+    values:
+      title: Welcome, Traveler
+      condition:
+        run: flatpak remotes --system | grep fedora
+      description: |
+        WARNING: This will modify your Flatpaks if you are rebasing! If you do not want to do this exit the installer.
+      actions:
+        - run: /usr/lib/fedora-third-party/fedora-third-party-opt-out
+        - run: /usr/bin/fedora-third-party disable
+        - run: flatpak remote-delete fedora --force
+        - run: flatpak remove --system --noninteractive --all
+        - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+  applications:
+    source: yafti.screen.package
+    values:
+      title: Application Installation
+      show_terminal: true
+      package_manager: yafti.plugin.flatpak
+      package_manager_defaults:
+        user: true
+        system: false
+      groups:
+        Core:
+          description: Core Applications
+          default: true
+          packages:
+          - Firefox:
+                package: org.mozilla.firefox
+                system: false
+                user: true
+          - Remmina:
+                package: org.remmina.Remmina
+                system: false
+                user: true
+          - LibreOffice:
+                package: org.libreoffice.LibreOffice
+                system: false
+                user: true
+          - Obsidian:
+                package: md.obsidian.Obsidian
+                system: false
+                user: true
+          - Xournal++:
+                package: com.github.xournalpp.xournalpp
+                system: false
+                user: true
+          - Rnote:
+                package: com.github.flxzt.rnote
+                system: false
+                user: true
+          - Flatseal:
+                package: com.github.tchx84.Flatseal
+                system: false
+                user: true
+          - MPV:
+                package: io.mpv.Mpv
+                system: false
+                user: true
+          - Chromium:
+                package: org.chromium.Chromium
+                system: false
+                user: true
+          - Opera:
+                package: com.opera.Opera
+                system: false
+                user: true
+          - Epiphany:
+                package: org.gnome.Epiphany
+                system: false
+                user: true
+          - Discord:
+                package: com.discordapp.Discord
+                system: false
+                user: true
+          - Thunderbird:
+                package: org.mozilla.Thunderbird
+                system: false
+                user: true
+          - Krita:
+                package: org.kde.krita
+                system: false
+                user: true
+          - Krita:
+                package: org.keepassxc.KeePassXC
+                system: false
+                user: true
+          
+  final-screen:
+    source: yafti.screen.title
+    values:
+      title: "All done!"
+      icon: "/path/to/icon"
+      links:
+        - "Install More Applications": 
+            run: /usr/bin/foot
+        - "Website":
+            run: /usr/bin/xdg-open https://sst.rievo.dev/uphy
+      description: |
+        Thanks for trying My Desktop, we hope you enjoy it!

@@ -2,6 +2,8 @@
 
 set -ouex pipefail
 
+pip install --prefix=/usr yafti
+
 systemctl enable rpm-ostreed-automatic.timer
 systemctl enable flatpak-system-update.timer
 
