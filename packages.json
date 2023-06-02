@@ -53,8 +53,7 @@
                 "python3-pip",
                 "libadwaita",
                 "polkit-gnome",
-                "mako",
-                "gdm"
+                "mako"
             ]
         },
         "exclude": {
