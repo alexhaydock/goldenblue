@@ -50,7 +50,8 @@
                 "rclone",
                 "restic",
                 "sshuttle",
-                "python3-pip"
+                "python3-pip",
+                "libadwaita"
             ]
         },
         "exclude": {
