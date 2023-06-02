@@ -4,7 +4,7 @@ ARG BASE_IMAGE="quay.io/fedora-ostree-desktops/${SOURCE_IMAGE}"
 ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-38}"
 
 FROM ghcr.io/ublue-os/config:latest AS config
-FROM ghcr.io/ublue-os/akmods:${FEDORA_MAJOR_VERSION} AS akmods
+# FROM ghcr.io/ublue-os/akmods:${FEDORA_MAJOR_VERSION} AS akmods
 
 FROM ${BASE_IMAGE}:${FEDORA_MAJOR_VERSION} AS builder
 
@@ -17,7 +17,7 @@ ADD packages.json /tmp/packages.json
 COPY etc/ /etc/
 
 COPY --from=config /rpms /tmp/rpms
-COPY --from=akmods /rpms /tmp/akmods-rpms
+# COPY --from=akmods /rpms /tmp/akmods-rpms
 
 RUN /tmp/build.sh
 RUN /tmp/post-install.sh
