@@ -49,7 +49,8 @@
                 "openconnect",
                 "rclone",
                 "restic",
-                "sshuttle"
+                "sshuttle",
+                "python3-pip"
             ]
         },
         "exclude": {
