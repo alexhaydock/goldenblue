@@ -97,6 +97,18 @@ screens:
                 package: org.keepassxc.KeePassXC
                 system: false
                 user: true
+          - Characters:
+                package: org.gnome.Characters
+                system: false
+                user: true
+          - NetworkDisplays:
+                package: org.gnome.NetworkDisplays
+                system: false
+                user: true
+          - Bottles:
+                package: com.usebottles.bottles
+                system: false
+                user: true
           
   final-screen:
     source: yafti.screen.title
