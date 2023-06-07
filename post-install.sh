@@ -27,3 +27,7 @@ rpm-ostree override remove dmenu
 ln -sf /usr/share/zoneinfo/Etc/UTC /etc/localtime
 
 authselect enable-feature with-fingerprint
+
+# DesktopEntry Execution: https://github.com/jceb/dex
+curl -o /usr/bin/dex https://raw.githubusercontent.com/jceb/dex/942fe998db240357dc839e1df07b4fe6668a1c22/dex
+chmod +x /usr/bin/dex
