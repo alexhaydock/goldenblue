@@ -11,8 +11,6 @@
         },
         "exclude": {
             "all": [
-                "gnome-software",
-                "gnome-software-rpm-ostree",
                 "virtualbox-guest-additions"
             ]
         }
