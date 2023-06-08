@@ -2,7 +2,9 @@
     "all": {
         "include": {
             "all": [
+                "below",
                 "clatd",
+                "htop",
                 "python3-pip",
                 "python3-psutil",
                 "qemu-user-static",
@@ -11,6 +13,8 @@
         },
         "exclude": {
             "all": [
+                "gnome-software",
+                "gnome-software-rpm-ostree",
                 "virtualbox-guest-additions"
             ]
         }
