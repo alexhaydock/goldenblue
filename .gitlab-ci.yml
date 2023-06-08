@@ -1,9 +1,24 @@
-build:
+stages:
+  - build
+  - push
+
+test-build:
   image: docker:latest
   stage: build
-  variables:
-    FEDORA_MAJOR_VERSION: "38"
   script:
+    - source ./vars.sh
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker build --pull -t "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}" -f Containerfile .
     - docker push "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}"
+
+build-and-push:
+  image: docker:latest
+  stage: build
+  script:
+    - source ./vars.sh
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}" -f Containerfile .
+    - docker push "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}"
+  only:
+    refs:
+      - main  # Only run the push job on code we've merged into main
