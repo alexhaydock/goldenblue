@@ -1,4 +1,9 @@
 ---
+variables:
+  FEDORA_MAJOR_VERSION: "38"
+  IMAGE_NAME: "silverblue"
+  SOURCE_IMAGE: "silverblue"  # Here we can use any of the image references from the upstream repo: https://quay.io/organization/fedora-ostree-desktops
+
 stages:
   - test
   - build
@@ -9,7 +14,6 @@ test-build:
   services:
     - docker:dind
   script:
-    - source ./vars.sh
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker build --pull -t "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}" -f Containerfile .
   except:
@@ -22,7 +26,6 @@ build-and-push:
   services:
     - docker:dind
   script:
-    - source ./vars.sh
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker build --pull -t "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}" -f Containerfile .
     - docker push "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}"
