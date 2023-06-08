@@ -1,3 +1,5 @@
+![Goldenblue Logo](logo.png)
+
 # Goldenblue
 
 Basically Fedora Silverblue, except my own golden image version of it... get it?
