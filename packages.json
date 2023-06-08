@@ -51,7 +51,8 @@
                 "python3-pip",
                 "libadwaita",
                 "polkit-gnome",
-                "mako"
+                "mako",
+                "brightnessctl"
             ]
         },
         "exclude": {
