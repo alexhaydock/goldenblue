@@ -3,9 +3,10 @@ ARG SOURCE_IMAGE="${SOURCE_IMAGE:-base}"
 ARG BASE_IMAGE="quay.io/fedora-ostree-desktops/${SOURCE_IMAGE}"
 ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-38}"
 
+# Import the uBlue config container to provide config (https://github.com/ublue-os/config)
 FROM ghcr.io/ublue-os/config:latest AS config
-# FROM ghcr.io/ublue-os/akmods:${FEDORA_MAJOR_VERSION} AS akmods
 
+# Start our build operation
 FROM ${BASE_IMAGE}:${FEDORA_MAJOR_VERSION} AS builder
 
 ARG IMAGE_NAME="${IMAGE_NAME}"
@@ -14,13 +15,21 @@ ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}"
 ADD build.sh /tmp/build.sh
 ADD post-install.sh /tmp/post-install.sh
 ADD packages.json /tmp/packages.json
+
+# Add our layered etc/ config from this repo
 COPY etc/ /etc/
 
+# Import the built rpms from the uBlue config container
+# these are built here:
+#   https://github.com/ublue-os/config/blob/main/Containerfile
+# and mostly contain some udev rules for common devices as well as
+# some useful Flatpak auto-update services.
 COPY --from=config /rpms /tmp/rpms
-# COPY --from=akmods /rpms /tmp/akmods-rpms
 
-RUN /tmp/build.sh
-RUN /tmp/post-install.sh
-RUN rm -rf /tmp/* /var/*
-RUN ostree container commit
-RUN mkdir -p /var/tmp && chmod -R 1777 /var/tmp
+# Run the build scripts from this repo, then commit the ostree
+# image and do some cleanup tasks
+RUN /tmp/build.sh && \
+    /tmp/post-install.sh && \
+    rm -rf /tmp/* /var/* && \
+    ostree container commit && \
+    mkdir -p /var/tmp && chmod -R 1777 /var/tmp
