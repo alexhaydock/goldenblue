@@ -1,11 +1,12 @@
-title: Welcome to uPhy
+---
+title: Welcome to Goldenblue
 properties:
   mode: "run-on-change"
 screens:
   first-screen:
     source: yafti.screen.title
     values:
-      title: "Welcome to uPhy (eternal Alpha)"
+      title: "Welcome to Goldenblue"
       icon: "/path/to/icon"
       description: |
         Pick some applications to get started
@@ -37,79 +38,91 @@ screens:
           description: Core Applications
           default: true
           packages:
-          - Firefox:
-                package: org.mozilla.firefox
+          - GitKraken:
+                package: com.axosoft.GitKraken
                 system: false
                 user: true
-          - Remmina:
-                package: org.remmina.Remmina
+          - Obfuscate:
+                package: com.belmoussaoui.Obfuscate
                 system: false
                 user: true
-          - LibreOffice:
-                package: org.libreoffice.LibreOffice
+          - Bitwarden:
+                package: com.bitwarden.desktop
+                system: false
+                user: true
+          - Tor Browser Launcher:
+                package: com.github.micahflee.torbrowser-launcher
+                system: false
+                user: true
+          - Microsoft Edge:
+                package: com.microsoft.Edge
+                system: false
+                user: true
+          - Blanket:
+                package: com.rafaelmardojai.Blanket
+                system: false
+                user: true
+          - Transmission:
+                package: com.transmissionbt.Transmission
+                system: false
+                user: true
+          - Visual Studio Code:
+                package: com.visualstudio.code
+                system: false
+                user: true
+          - Element:
+                package: im.riot.Riot
+                system: false
+                user: true
+          - mpv:
+                package: io.mpv.Mpv
                 system: false
                 user: true
           - Obsidian:
                 package: md.obsidian.Obsidian
                 system: false
                 user: true
-          - Xournal++:
-                package: com.github.xournalpp.xournalpp
+          - SuperTuxKart:
+                package: net.supertuxkart.SuperTuxKart
                 system: false
                 user: true
-          - Rnote:
-                package: com.github.flxzt.rnote
+          - Audacity:
+                package: org.audacityteam.Audacity
                 system: false
                 user: true
-          - Flatseal:
-                package: com.github.tchx84.Flatseal
+          - GNU Image Manipulation Program:
+                package: org.gimp.GIMP
                 system: false
                 user: true
-          - MPV:
-                package: io.mpv.Mpv
+          - gPodder:
+                package: org.gpodder.gpodder
                 system: false
                 user: true
-          - Chromium:
-                package: org.chromium.Chromium
+          - LibreOffice:
+                package: org.libreoffice.LibreOffice
                 system: false
                 user: true
-          - Opera:
-                package: com.opera.Opera
+          - Raspberry Pi Imager:
+                package: org.raspberrypi-rpi-imager
                 system: false
                 user: true
-          - Epiphany:
-                package: org.gnome.Epiphany
+          - Sonic Robo Blast 2 Kart:
+                package: org.srb2.SRB2Kart
                 system: false
                 user: true
-          - Discord:
-                package: com.discordapp.Discord
+          - Stellarium:
+                package: org.stellarium.Stellarium
                 system: false
                 user: true
-          - Thunderbird:
-                package: org.mozilla.Thunderbird
+          - ZAP:
+                package: org.zaproxy.ZAP
                 system: false
                 user: true
-          - Krita:
-                package: org.kde.krita
+          - Zotero:
+                package: org.zotero.Zotero
                 system: false
                 user: true
-          - Krita:
-                package: org.keepassxc.KeePassXC
-                system: false
-                user: true
-          - Characters:
-                package: org.gnome.Characters
-                system: false
-                user: true
-          - NetworkDisplays:
-                package: org.gnome.NetworkDisplays
-                system: false
-                user: true
-          - Bottles:
-                package: com.usebottles.bottles
-                system: false
-                user: true
-          
+
   final-screen:
     source: yafti.screen.title
     values:
@@ -119,6 +132,7 @@ screens:
         - "Install More Applications": 
             run: /usr/bin/foot
         - "Website":
-            run: /usr/bin/xdg-open https://sst.rievo.dev/uphy
+            run: /usr/bin/xdg-open https://gitlab.com/alexhaydock/goldenblue
       description: |
-        Thanks for trying My Desktop, we hope you enjoy it!
+        Thanks :)
+...

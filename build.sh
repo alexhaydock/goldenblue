@@ -1,5 +1,4 @@
 #!/bin/sh
-
 set -ouex pipefail
 
 RELEASE="$(rpm -E %fedora)"
@@ -45,5 +44,4 @@ elif [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]];
         $(printf -- "--install=%s " ${INCLUDED_PACKAGES[@]})
 else
     echo "No packages to install."
-
 fi

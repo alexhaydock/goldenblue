@@ -1,3 +1,4 @@
+---
 stages:
   - build
   - push
@@ -25,3 +26,4 @@ build-and-push:
   only:
     refs:
       - main  # Only run the push job on code we've merged into main
+...

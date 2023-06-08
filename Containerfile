@@ -12,9 +12,9 @@ FROM ${BASE_IMAGE}:${FEDORA_MAJOR_VERSION} AS builder
 ARG IMAGE_NAME="${IMAGE_NAME}"
 ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}"
 
-ADD build.sh /tmp/build.sh
-ADD post-install.sh /tmp/post-install.sh
-ADD packages.json /tmp/packages.json
+COPY build.sh /tmp/build.sh
+COPY post-install.sh /tmp/post-install.sh
+COPY packages.json /tmp/packages.json
 
 # Add our layered etc/ config from this repo
 COPY etc/ /etc/

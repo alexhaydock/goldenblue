@@ -1,9 +1,8 @@
 #!/bin/sh
-
 set -ouex pipefail
 
-# (Disabled) install yafti via Pip
-#pip install --prefix=/usr yafti
+# Install yafti via Pip
+python3 -m pip install --prefix=/usr yafti
 
 # Enable rpm-ostree automatic updates
 cp /usr/share/ublue-os/update-services/etc/rpm-ostreed.conf /etc/rpm-ostreed.conf
