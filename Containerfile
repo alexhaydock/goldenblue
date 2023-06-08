@@ -1,7 +1,10 @@
-ARG IMAGE_NAME="${IMAGE_NAME:-base}"
-ARG SOURCE_IMAGE="${SOURCE_IMAGE:-base}"
+# We pass these vars in from the GitLab CI env vars using --build-arg
+ARG FEDORA_MAJOR_VERSION
+ARG IMAGE_NAME
+ARG SOURCE_IMAGE
+
+# Construct this var based on the above
 ARG BASE_IMAGE="quay.io/fedora-ostree-desktops/${SOURCE_IMAGE}"
-ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-38}"
 
 # Import the uBlue config container to provide config (https://github.com/ublue-os/config)
 FROM ghcr.io/ublue-os/config:latest AS config

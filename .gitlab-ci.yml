@@ -15,7 +15,7 @@ test-build:
     - docker:dind
   script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}" -f Containerfile .
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}" -f Containerfile --build-arg FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}" --build-arg IMAGE_NAME="${IMAGE_NAME}" --build-arg SOURCE_IMAGE="${SOURCE_IMAGE}" .
   except:
     refs:
       - main  # Don't run on main as if we've merged into main we already ran so we can jump straight to the job that pushes to prod
@@ -27,7 +27,7 @@ build-and-push:
     - docker:dind
   script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}" -f Containerfile .
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}" -f Containerfile --build-arg FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}" --build-arg IMAGE_NAME="${IMAGE_NAME}" --build-arg SOURCE_IMAGE="${SOURCE_IMAGE}" .
     - docker push "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}"
   only:
     refs:
