@@ -1,1 +1,3 @@
 FEDORA_MAJOR_VERSION="38"
+IMAGE_NAME="silverblue"
+SOURCE_IMAGE="silverblue"
