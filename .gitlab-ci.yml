@@ -1,11 +1,11 @@
 ---
 stages:
+  - test
   - build
-  - push
 
 test-build:
   image: docker:latest
-  stage: build
+  stage: test
   services:
     - docker:dind
   script:
