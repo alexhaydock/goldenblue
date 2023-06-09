@@ -2,12 +2,13 @@
 title: Welcome to Goldenblue
 properties:
   mode: "run-on-change"
+  path: "~/.config/yafti/last-run"  # We can just rm this file if we want to force yafti to run
 screens:
   first-screen:
     source: yafti.screen.title
     values:
       title: "Welcome to Goldenblue"
-      icon: "/path/to/icon"
+      icon: "/etc/yafti.svg"
       description: |
         Pick some applications to get started
   can-we-modify-your-flatpaks:
@@ -34,8 +35,8 @@ screens:
         user: true
         system: false
       groups:
-        Core:
-          description: Core Applications
+        Productivity:
+          description: Core productivity apps
           default: true
           packages:
           - GitKraken:
@@ -82,10 +83,6 @@ screens:
                 package: md.obsidian.Obsidian
                 system: false
                 user: true
-          - SuperTuxKart:
-                package: net.supertuxkart.SuperTuxKart
-                system: false
-                user: true
           - Audacity:
                 package: org.audacityteam.Audacity
                 system: false
@@ -106,10 +103,6 @@ screens:
                 package: org.raspberrypi-rpi-imager
                 system: false
                 user: true
-          - Sonic Robo Blast 2 Kart:
-                package: org.srb2.SRB2Kart
-                system: false
-                user: true
           - Stellarium:
                 package: org.stellarium.Stellarium
                 system: false
@@ -122,12 +115,24 @@ screens:
                 package: org.zotero.Zotero
                 system: false
                 user: true
+        Games:
+          description: Open source video game goodness
+          default: true
+          packages:
+          - Sonic Robo Blast 2 Kart:
+                package: org.srb2.SRB2Kart
+                system: false
+                user: true
+          - SuperTuxKart:
+                package: net.supertuxkart.SuperTuxKart
+                system: false
+                user: true
 
   final-screen:
     source: yafti.screen.title
     values:
       title: "All done!"
-      icon: "/path/to/icon"
+      icon: "/etc/yafti.svg"
       links:
         - "Install More Applications": 
             run: /usr/bin/foot
