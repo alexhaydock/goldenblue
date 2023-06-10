@@ -35,106 +35,56 @@ screens:
         user: true
         system: false
       groups:
+        GNOME:
+          description: Applications from the GNOME desktop suite
+          default: true
+          packages:
+          - Calculator: org.gnome.Calculator
+          - Characters: org.gnome.Characters
+          - Disk Usage Analyzer: org.gnome.baobab
+          - Document Viewer: org.gnome.Evince
+          - Firmware: org.gnome.Firmware
+          - Image Viewer: org.gnome.eog
+          - Logs: org.gnome.Logs
+          - Maps: org.gnome.Maps
+          - Text Editor: org.gnome.TextEditor
+          - Weather: org.gnome.Weather
+          - Web (Epiphany): org.gnome.Epiphany
         Productivity:
           description: Core productivity apps
           default: true
           packages:
-          - GitKraken:
-                package: com.axosoft.GitKraken
-                system: false
-                user: true
-          - Obfuscate:
-                package: com.belmoussaoui.Obfuscate
-                system: false
-                user: true
-          - Bitwarden:
-                package: com.bitwarden.desktop
-                system: false
-                user: true
-          - Tor Browser Launcher:
-                package: com.github.micahflee.torbrowser-launcher
-                system: false
-                user: true
-          - Microsoft Edge:
-                package: com.microsoft.Edge
-                system: false
-                user: true
-          - Blanket:
-                package: com.rafaelmardojai.Blanket
-                system: false
-                user: true
-          - Transmission:
-                package: com.transmissionbt.Transmission
-                system: false
-                user: true
-          - Visual Studio Code:
-                package: com.visualstudio.code
-                system: false
-                user: true
-          - Element:
-                package: im.riot.Riot
-                system: false
-                user: true
-          - mpv:
-                package: io.mpv.Mpv
-                system: false
-                user: true
-          - Obsidian:
-                package: md.obsidian.Obsidian
-                system: false
-                user: true
-          - Audacity:
-                package: org.audacityteam.Audacity
-                system: false
-                user: true
-          - GNU Image Manipulation Program:
-                package: org.gimp.GIMP
-                system: false
-                user: true
-          - gPodder:
-                package: org.gpodder.gpodder
-                system: false
-                user: true
-          - LibreOffice:
-                package: org.libreoffice.LibreOffice
-                system: false
-                user: true
-          - Raspberry Pi Imager:
-                package: org.raspberrypi.rpi-imager
-                system: false
-                user: true
-          - Stellarium:
-                package: org.stellarium.Stellarium
-                system: false
-                user: true
-          - ZAP:
-                package: org.zaproxy.ZAP
-                system: false
-                user: true
-          - Zotero:
-                package: org.zotero.Zotero
-                system: false
-                user: true
+          - Audacity: org.audacityteam.Audacity
+          - Bitwarden: com.bitwarden.desktop
+          - Blanket: com.rafaelmardojai.Blanket
+          - Element: im.riot.Riot
+          - Firefox: org.mozilla.firefox
+          - GitKraken: com.axosoft.GitKraken
+          - GNU Image Manipulation Program: org.gimp.GIMP
+          - gPodder: org.gpodder.gpodder
+          - LibreOffice: org.libreoffice.LibreOffice
+          - Microsoft Edge: com.microsoft.Edge
+          - mpv: io.mpv.Mpv
+          - Obfuscate: com.belmoussaoui.Obfuscate
+          - Obsidian: md.obsidian.Obsidian
+          - Raspberry Pi Imager: org.raspberrypi.rpi-imager
+          - Stellarium: org.stellarium.Stellarium
+          - Tor Browser Launcher: com.github.micahflee.torbrowser-launcher
+          - Transmission: com.transmissionbt.Transmission
+          - Visual Studio Code: com.visualstudio.code
+          - ZAP: org.zaproxy.ZAP
+          - Zotero: org.zotero.Zotero
         Games:
           description: Open source video game goodness
           default: true
           packages:
-          - Sonic Robo Blast 2 Kart:
-                package: org.srb2.SRB2Kart
-                system: false
-                user: true
-          - SuperTuxKart:
-                package: net.supertuxkart.SuperTuxKart
-                system: false
-                user: true
+          - Sonic Robo Blast 2 Kart: org.srb2.SRB2Kart
+          - SuperTuxKart: net.supertuxkart.SuperTuxKart
         LaTeX Editing Tools:
           description: LaTeX document tools (large filesize!)
           default: false
           packages:
-          - TeXstudio:
-                package: org.texstudio.TeXstudio
-                system: false
-                user: true
+          - TeXstudio: org.texstudio.TeXstudio
   final-screen:
     source: yafti.screen.title
     values:

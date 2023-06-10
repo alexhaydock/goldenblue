@@ -13,6 +13,8 @@
         },
         "exclude": {
             "all": [
+                "firefox",
+                "firefox-langpacks",
                 "gnome-software",
                 "gnome-software-rpm-ostree",
                 "virtualbox-guest-additions"
