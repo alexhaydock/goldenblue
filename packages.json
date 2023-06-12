@@ -8,6 +8,7 @@
                 "python3-pip",
                 "python3-psutil",
                 "qemu-user-static",
+                "sshfs",
                 "wireshark"
             ]
         },
