@@ -2,14 +2,33 @@
     "all": {
         "include": {
             "all": [
+                "ansible-collection-ansible-posix",
+                "ansible-collection-community-general",
+                "ansible-collection-containers-podman",
+                "ansible",
                 "below",
+                "bind-utils",
                 "clatd",
+                "hadolint",
                 "htop",
+                "iperf3",
+                "jq",
+                "mtr",
+                "neofetch",
+                "powerline",
+                "python3-ansible-lint",
+                "python3-pexpect",
                 "python3-pip",
                 "python3-psutil",
                 "qemu-user-static",
+                "qrencode",
+                "scap-security-guide",
+                "scap-workbench",
+                "ShellCheck",
                 "sshfs",
-                "wireshark"
+                "sshpass",
+                "wireshark",
+                "yamllint"
             ]
         },
         "exclude": {
@@ -22,20 +41,26 @@
             ]
         }
     },
-    "37": {
-        "include": {
-            "all": []
-        },
-        "exclude": {
-            "all": []
-        }
-    },
+
     "38": {
         "include": {
-            "all": []
+            "all": [
+            ]
         },
         "exclude": {
-            "all": []
+            "all": [
+            ]
+        }
+    },
+
+    "37": {
+        "include": {
+            "all": [
+            ]
+        },
+        "exclude": {
+            "all": [
+            ]
         }
     }
 }
