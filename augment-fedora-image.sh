@@ -11,23 +11,11 @@ EXCLUDED_PACKAGES=($(jq -r "[(.all.exclude | (.all, select(.\"$IMAGE_NAME\" != n
                              (select(.\"$FEDORA_MAJOR_VERSION\" != null).\"$FEDORA_MAJOR_VERSION\".exclude | (.all, select(.\"$IMAGE_NAME\" != null).\"$IMAGE_NAME\")[])] \
                              | sort | unique[]" /tmp/packages.json))
 
-
 # Iterate through the undesirable packages and make sure we actually have them, rather
 # than trying to remove packages we don't actually have installed in the base image
 if [[ "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
     EXCLUDED_PACKAGES=($(rpm -qa --queryformat='%{NAME} ' ${EXCLUDED_PACKAGES[@]}))
 fi
-
-# (Disabled) - I don't want RPMFusion
-#wget -P /tmp/rpms \
-#    https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-${RELEASE}.noarch.rpm \
-#    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${RELEASE}.noarch.rpm
-
-# Install the rpms we import from the uBlue container
-# (see Containerfile comments for more info)
-rpm-ostree install \
-    /tmp/rpms/*.rpm \
-    fedora-repos-archive
 
 # Install our desired packages and remove the ones we don't want
 if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
@@ -45,3 +33,21 @@ elif [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]];
 else
     echo "No packages to install."
 fi
+
+# Install Yafti via Pip to handle Flatpak postinstall once we get
+# to a desktop
+python3 -m pip install --prefix=/usr yafti
+
+# Enable rpm-ostree automatic updates
+systemctl enable rpm-ostreed-automatic.timer
+
+# Enable the Flatpak auto-updater we inherit from uBlue
+# (Allows us to remove GNOME Software)
+systemctl enable flatpak-system-update.timer
+systemctl --global enable flatpak-user-update.timer
+
+# enable tty1
+systemctl enable getty@tty1.service
+
+# Configure Europe/London as our timezone
+ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
