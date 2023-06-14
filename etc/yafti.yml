@@ -54,13 +54,11 @@ screens:
           description: Core productivity apps
           default: true
           packages:
-          - Audacity: org.audacityteam.Audacity
           - Bitwarden: com.bitwarden.desktop
           - Blanket: com.rafaelmardojai.Blanket
           - Element: im.riot.Riot
           - Firefox: org.mozilla.firefox
           - GitKraken: com.axosoft.GitKraken
-          - GNU Image Manipulation Program: org.gimp.GIMP
           - gPodder: org.gpodder.gpodder
           - LibreOffice: org.libreoffice.LibreOffice
           - Microsoft Edge: com.microsoft.Edge
@@ -74,6 +72,16 @@ screens:
           - Visual Studio Code: com.visualstudio.code
           - ZAP: org.zaproxy.ZAP
           - Zotero: org.zotero.Zotero
+        Creativity:
+          description: Music and image creation, manipulation end editing tools
+          default: true
+          packages:
+          - Audacity: org.audacityteam.Audacity
+          - darktable: org.darktable.Darktable
+          - Entangle: org.entangle_photo.Manager
+          - GNU Image Manipulation Program: org.gimp.GIMP
+          - OBS Studio: com.obsproject.Studio
+          - RawTherapee: com.rawtherapee.RawTherapee
         Games:
           description: Open source video game goodness
           default: true
