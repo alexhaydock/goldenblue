@@ -35,7 +35,6 @@ RUN ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 RUN /tmp/augment-fedora-image.sh && \
     python3 -m pip install --prefix=/usr yafti && \
     systemctl enable tlp.service && \
-    systemctl enable fprintd.service && \
     systemctl enable dconf-update.service && \
     systemctl enable flatpak-system-update.timer && \
     systemctl enable update-kargs.service && \
