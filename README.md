@@ -23,12 +23,12 @@ sudo rpm-ostree reset
 ```
 5. Rebase to Goldenblue (without validating signatures, so we can import the sigs):
 ```sh
-sudo rpm-ostree rebase ostree-unverified-image:docker://git.infected.systems:5050/infectedsystems/goldenblue:39
+sudo rpm-ostree rebase ostree-unverified-image:docker://git.infected.systems:5050/infectedsystems/goldenblue:40
 ```
 6. Reboot
 7. Now we can switch to validating signatures on the Goldenblue image:
 ```sh
-sudo rpm-ostree rebase ostree-image-signed:docker://git.infected.systems:5050/infectedsystems/goldenblue:39
+sudo rpm-ostree rebase ostree-image-signed:docker://git.infected.systems:5050/infectedsystems/goldenblue:40
 ```
 5. Reboot
 
