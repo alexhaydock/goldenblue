@@ -1,0 +1,11 @@
+[Unit]
+Description=Update kernel arguments on boot, in case we need to
+After=rpm-ostreed.service
+Before=systemd-user-sessions.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/update-kargs
+
+[Install]
+WantedBy=multi-user.target

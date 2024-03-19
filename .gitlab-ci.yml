@@ -1,0 +1,70 @@
+---
+variables:
+  # Note that this is the only place we actually need to configure our
+  # upstream Fedora version number to rebase the image. We can use either
+  # the major version integer, or the literal string "rawhide".
+  FEDORA_MAJOR_VERSION: "40"
+  IMAGE_NAME: "silverblue"
+  SOURCE_IMAGE: "silverblue"  # Here we can use any of the image references from the upstream repo: https://quay.io/organization/fedora-ostree-desktops
+
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  image: quay.io/buildah/stable:latest
+  before_script:
+    - buildah login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    # Fix the permissions of the files in the local repo before we bundle them into the Docker container
+    - /bin/sh ./fix-perms.sh
+  script:
+    - buildah build --pull -t "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}" -f Containerfile --build-arg FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}" --build-arg IMAGE_NAME="${IMAGE_NAME}" --build-arg SOURCE_IMAGE="${SOURCE_IMAGE}" .
+  except:
+    refs:
+      - main  # Don't run on main as if we've merged into main we already ran so we can jump straight to the job that pushes to prod
+  tags:
+    - x86_64
+
+# Based on a combo of the GitLab CI Sigstore docs here:
+#   https://docs.gitlab.com/ee/ci/yaml/signing_examples.html
+# the Sigstore upstream docs here:
+#   https://docs.sigstore.dev/cosign/signing_with_containers/
+# and the Bluefin GitHub action here:
+#   https://github.com/ublue-os/bluefin/blob/8f1a61621305b0cbaa5ebed77488b5afa2e49e37/.github/workflows/build.yml#L188-L195
+# Sigstore key is generated with Cosign using the methodology from the docs here (`cosign generate-key-pair gitlab://alexhaydock/goldenblue`):
+#   https://github.com/sigstore/cosign/blob/b8c59979dce846c8a77d950ab35506823fa11abf/doc/cosign_generate-key-pair.md
+# When the command above is run on a system with a token set in $GITLAB_TOKEN which has full API access to the current repo, it will generate
+# the Cosign key and write the COSIGN_PASSWORD, COSIGN_PRIVATE_KEY, and COSIGN_PUBLIC_KEY variables in the project repo.
+deploy:
+  stage: deploy
+  image: quay.io/buildah/stable:latest
+  variables:
+    COSIGN_YES: "true"
+  id_tokens:
+    SIGSTORE_ID_TOKEN:
+      aud: sigstore  
+  before_script:
+    # Fix the permissions of the files in the local repo before we bundle them into the Docker container
+    - /bin/sh ./fix-perms.sh
+    # Grab Cosign
+    - curl -fsSL 'https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64' -o /usr/local/bin/cosign
+    - chmod +x /usr/local/bin/cosign
+    # Login to registry as both Buildah and Cosign
+    - buildah login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    ## Not sure if the Cosign login is needed
+    - /usr/local/bin/cosign login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - buildah build --pull -t "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}" -f Containerfile --build-arg FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}" --build-arg IMAGE_NAME="${IMAGE_NAME}" --build-arg SOURCE_IMAGE="${SOURCE_IMAGE}" .
+    - buildah push "$CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}"
+    # Sign image with Cosign after sleeping for a bit to make sure
+    # the build has finished pushing
+    - sleep 5
+    - IMAGE_DIGEST=$(buildah inspect --format='{{index .FromImageDigest}}' $CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION})
+    - echo "${IMAGE_DIGEST}"
+    - /usr/local/bin/cosign --verbose=true sign -y --key env://COSIGN_PRIVATE_KEY $CI_REGISTRY_IMAGE:${FEDORA_MAJOR_VERSION}@${IMAGE_DIGEST}
+  only:
+    refs:
+      - main  # Only run the push job on code we've merged into main
+  tags:
+    - x86_64

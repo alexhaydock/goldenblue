@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+# Grab current kernel arguments
+echo "Current kernel arguments: $KARGS"
+
+# Enable deep (S3) sleep if not currently enabled
+if [[ ! $KARGS =~ "mem_sleep_default" ]]; then
+  echo "Enabling deep (S3) sleep by default"
+  NEEDED_KARGS+=("--append-if-missing=mem_sleep_default=deep")
+fi
+
+if [[ -n "$NEEDED_KARGS" ]]; then
+  echo "Found needed kernel argument changes, applying the following: ${NEEDED_KARGS[*]}"
+  plymouth display-message --text="Updating kernel arguments - Please wait, this may take a while" || true
+  rpm-ostree kargs ${NEEDED_KARGS[*]} --reboot || exit 1
+else
+  echo "No kernel argument changes needed"
+fi

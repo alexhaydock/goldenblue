@@ -1,0 +1,93 @@
+# See GNOME help for more info:
+#   https://help.gnome.org/admin/system-admin-guide/stable/dconf-custom-defaults.html.en
+
+# Configure wallpaper
+[org/gnome/desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/wallpapers/bobonasa.png'
+picture-uri-dark='file:///usr/share/wallpapers/bobonasa.png'
+primary-color='#000000'
+secondary-color='#FFFFFF'
+
+# Configure lockscreen wallpaper
+[org/gnome/desktop/screensaver]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/wallpapers/bobonasa.png'
+primary-color='#000000'
+secondary-color='#FFFFFF'
+
+# Scale text to 1.25x
+[org/gnome/desktop/interface]
+clock-show-weekday=true
+show-battery-percentage=true
+text-scaling-factor=1.25
+
+[org/gnome/desktop/wm/preferences]
+button-layout=":minimize,maximize,close"
+
+[org/gnome/desktop/wm/keybindings]
+switch-applications = ['<Super>Tab']
+switch-applications-backward = ['<Shift><Super>Tab']
+switch-windows = ['<Alt>Tab']
+switch-windows-backward = ['<Shift><Alt>Tab']
+
+# Enable tap to click
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true
+
+[org/gnome/nautilus/preferences]
+recursive-search='always'
+show-image-thumbnails='always'
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=true
+night-light-schedule-automatic=false
+night-light-temperature=uint32 3700
+
+# Disables automatic brightness
+[org/gnome/settings-daemon/plugins/power]
+ambient-enabled=false
+
+# Don't show notifications on lockscreen
+[org/gnome/desktop/notifications]
+show-in-lock-screen=false
+
+# Open Terminal with Ctrl+Alt+T
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Control><Alt>t'
+command='gnome-terminal'
+name='gnome-terminal'
+
+# Open Fedora in Distrobox with Ctrl+Alt+F
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Control><Alt>f'
+command='flatpak run com.raggesilver.BlackBox'
+name='Fedora Toolbox running in Distrobox'
+
+# Enable our custom keybindings that we defined above, and open Nautilus with Super+E
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']
+home=['<Super>e']
+
+# Disable location services
+[org/gnome/system/location]
+enabled=false
+
+[org/gtk/gtk4/settings/file-chooser]
+sort-directories-first=true
+
+[com/raggesilver/BlackBox]
+command-as-login-shell=true
+use-custom-command=true
+custom-shell-command='distrobox enter fedora'
+style-preference=2
+
+[org/gnome/desktop/privacy]
+old-files-age=uint32 7
+recent-files-max-age=7
+remember-recent-files=false
+remove-old-temp-files=true
+remove-old-trash-files=true
+report-technical-problems=false

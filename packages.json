@@ -1,0 +1,60 @@
+{
+    "all": {
+        "include": {
+            "all": [
+                "bcc-tools",
+                "below",
+                "bpftrace",
+                "clatd",
+                "conntrack-tools",
+                "distrobox",
+                "htop",
+                "langpacks-en_GB",
+                "powertop",
+                "python3-pip",
+                "sos",
+                "sshfs",
+                "tlp",
+                "tlp-rdw",
+                "wireguard-tools",
+                "wireshark"
+            ]
+        },
+        "exclude": {
+            "all": [
+                "firefox",
+                "firefox-langpacks",
+                "gnome-software",
+                "gnome-software-rpm-ostree",
+                "open-vm-tools",
+                "open-vm-tools-desktop",
+                "power-profiles-daemon",
+                "qemu-guest-agent",
+                "toolbox",
+                "virtualbox-guest-additions"
+            ]
+        }
+    },
+
+    "38": {
+        "include": {
+            "all": [
+            ]
+        },
+        "exclude": {
+            "all": [
+            ]
+        }
+    },
+
+    "37": {
+        "include": {
+            "all": [
+            ]
+        },
+        "exclude": {
+            "all": [
+            ]
+        }
+    }
+}

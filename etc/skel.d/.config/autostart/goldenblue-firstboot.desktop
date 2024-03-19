@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Yafti
+Comment=Configures Yafti to run on first boot or after change of Yafti config
+Exec=/usr/bin/yafti /etc/yafti.yml
+Icon=org.gnome.Terminal
+Type=Application
+Categories=Utility;System;

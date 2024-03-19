@@ -1,0 +1,106 @@
+---
+title: Goldenblue OOBE
+properties:
+  mode: "run-on-change"
+  path: "~/.config/yafti/last-run"  # We can just rm this file if we want to force yafti to run
+screens:
+  first-screen:
+    source: yafti.screen.title
+    values:
+      icon: "/etc/yafti.svg"
+      title: "Welcome to Goldenblue!"
+      description: |
+        This post-install wizard will help set up recommended Flatpaks on your system.
+  can-we-modify-your-flatpaks:
+    source: yafti.screen.consent
+    values:
+      condition:
+        run: flatpak remotes --system | grep fedora
+      title: Warning!
+      description: |
+        This step will remove all existing Flatpaks from the Fedora Flatpak repository. Please quit now if you do not wish to do this.
+      actions:
+        - run: /usr/lib/fedora-third-party/fedora-third-party-opt-out
+        - run: /usr/bin/fedora-third-party disable
+        - run: flatpak remote-delete fedora --force
+        - run: flatpak remove --system --noninteractive --all
+        - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+  applications:
+    source: yafti.screen.package
+    values:
+      title: Install your applications
+      show_terminal: true
+      package_manager: yafti.plugin.flatpak
+      package_manager_defaults:
+        user: true
+        system: false
+      groups:
+        GNOME:
+          description: Applications from the GNOME desktop suite
+          default: true
+          packages:
+          - Calculator: org.gnome.Calculator
+          - Characters: org.gnome.Characters
+          - Disk Usage Analyzer: org.gnome.baobab
+          - Document Viewer: org.gnome.Evince
+          - Firmware: org.gnome.Firmware
+          - Image Viewer: org.gnome.eog
+          - Logs: org.gnome.Logs
+          - Maps: org.gnome.Maps
+          - Text Editor: org.gnome.TextEditor
+          - Weather: org.gnome.Weather
+        Productivity:
+          description: Core productivity apps
+          default: true
+          packages:
+          - Bitwarden: com.bitwarden.desktop
+          - Blackbox: com.raggesilver.BlackBox
+          - Blanket: com.rafaelmardojai.Blanket
+          - Cider: sh.cider.Cider
+          - Element: im.riot.Riot
+          - Firefox: org.mozilla.firefox
+          - GNU Image Manipulation Program: org.gimp.GIMP
+          - gPodder: org.gpodder.gpodder
+          - JDownloader: org.jdownloader.JDownloader
+          - LibreOffice: org.libreoffice.LibreOffice
+          - LibreWolf: io.gitlab.librewolf-community
+          - mpv: io.mpv.Mpv
+          - Obfuscate: com.belmoussaoui.Obfuscate
+          - OBS Studio: com.obsproject.Studio
+          - Obsidian: md.obsidian.Obsidian
+          - Podman Desktop: io.podman_desktop.PodmanDesktop
+          - Raspberry Pi Imager: org.raspberrypi.rpi-imager
+          - Tor Browser Launcher: org.torproject.torbrowser-launcher
+          - Video Trimmer: org.gnome.gitlab.YaLTeR.VideoTrimmer
+          - Visual Studio Code: com.visualstudio.code
+          - Zotero: org.zotero.Zotero
+        Games:
+          description: Open source video game goodness
+          default: true
+          packages:
+          - Sonic Robo Blast 2 Kart Galaxy: org.srb2.SRB2Kart-galaxy/x86_64/stable  # Ambiguous otherwise
+          - SuperTuxKart: net.supertuxkart.SuperTuxKart
+        Creativity:
+          description: Music and image creation, manipulation end editing tools
+          default: false
+          packages:
+          - Audacity: org.audacityteam.Audacity
+          - darktable: org.darktable.Darktable
+          - Entangle: org.entangle_photo.Manager
+          - RawTherapee: com.rawtherapee.RawTherapee
+        LaTeX Editing Tools:
+          description: LaTeX document tools (large filesize!)
+          default: false
+          packages:
+          - TeXstudio: org.texstudio.TeXstudio
+  final-screen:
+    source: yafti.screen.title
+    values:
+      icon: "/etc/yafti.svg"
+      title: "All done!"
+      description: |
+        Thanks for trying Goldenblue :)
+      links:
+        - "Goldenblue on GitHub":
+            run: /usr/bin/xdg-open https://github.com/alexhaydock/goldenblue
+...

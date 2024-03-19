@@ -1,0 +1,7 @@
+# Note: It is critical that files in /etc/containers/registries.d/
+#       use an extension of .yaml and not .yml otherwise they will
+#       be ignored without any visual feedback that they are not
+#       actively being included in the runtime config.
+docker:
+    registry.gitlab.com/alexhaydock/goldenblue:
+        use-sigstore-attachments: true
