@@ -14,8 +14,6 @@
                 "python3-pip",
                 "sos",
                 "sshfs",
-                "tlp",
-                "tlp-rdw",
                 "wireguard-tools",
                 "wireshark"
             ]
@@ -28,7 +26,6 @@
                 "gnome-software-rpm-ostree",
                 "open-vm-tools",
                 "open-vm-tools-desktop",
-                "power-profiles-daemon",
                 "qemu-guest-agent",
                 "toolbox",
                 "virtualbox-guest-additions"
