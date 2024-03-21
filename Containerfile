@@ -34,11 +34,10 @@ RUN ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 # https://github.com/ublue-os/framework/blob/main/framework-packages.json
 RUN /tmp/augment-fedora-image.sh && \
     python3 -m pip install --prefix=/usr yafti && \
-    systemctl enable tlp.service && \
+    systemctl --global enable flatpak-user-update.timer && \
     systemctl enable dconf-update.service && \
     systemctl enable flatpak-system-update.timer && \
-    systemctl enable update-kargs.service && \
-    systemctl --global enable flatpak-user-update.timer && \
     systemctl enable rpm-ostreed-automatic.timer && \
+    systemctl enable update-kargs.service && \
     rm -rf /tmp/* /var/* && \
     ostree container commit
