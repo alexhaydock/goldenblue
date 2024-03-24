@@ -39,5 +39,6 @@ RUN /tmp/augment-fedora-image.sh && \
     systemctl enable flatpak-system-update.timer && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable update-kargs.service && \
+    systemctl enable podman.socket && \
     rm -rf /tmp/* /var/* && \
     ostree container commit
