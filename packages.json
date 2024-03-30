@@ -5,7 +5,6 @@
                 "bcc-tools",
                 "below",
                 "bpftrace",
-                "clatd",
                 "conntrack-tools",
                 "distrobox",
                 "docker-compose",
