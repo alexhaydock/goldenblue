@@ -47,6 +47,12 @@ distrobox enter wolfi
 
 The BlackBox terminal emulator (installed via Flatpak by Yafti) is configured in `dconf` to start up using `distrobox enter fedora` as the initial command, so opening the BlackBox shortcut will drop you directly into an Fedora Distrobox. This is also mapped to the `Ctrl` + `Alt` + `F` desktop shortcut using `dconf`.
 
+### Debugging
+To debug whether any core issues you are facing are part of a custom image or also exist upstream, you can temporarily rebase on the upstream Silverblue image like so:
+```sh
+sudo rpm-ostree rebase ostree-image-signed:docker://quay.io/fedora/fedora-silverblue:40
+```
+
 ### Caveats
 * This image is not currently built for `aarch64`. I'm aiming to fix this in future.
 * I cannot offer any support for this image. You're on your own here if you try and use it.
