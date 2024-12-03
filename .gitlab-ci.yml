@@ -3,7 +3,7 @@ variables:
   # Note that this is the only place we actually need to configure our
   # upstream Fedora version number to rebase the image. We can use either
   # the major version integer, or the literal string "rawhide".
-  FEDORA_MAJOR_VERSION: "40"
+  FEDORA_MAJOR_VERSION: "41"
   IMAGE_NAME: "silverblue"
   SOURCE_IMAGE: "silverblue"  # Here we can use any of the image references from the upstream repo: https://quay.io/organization/fedora-ostree-desktops
 

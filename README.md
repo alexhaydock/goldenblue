@@ -1,4 +1,4 @@
-![Goldenblue Logo](logo.png)
+![Goldenblue Logo](logo.svg)
 
 # Goldenblue
 
