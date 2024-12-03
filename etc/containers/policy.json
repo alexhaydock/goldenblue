@@ -20,7 +20,7 @@
                     "keyPath": "/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
                 }
             ],
-            "registry.gitlab.com/alexhaydock/goldenblue": [
+            "git.infected.systems:5050/infectedsystems/goldenblue": [
                 {
                     "type": "sigstoreSigned",
                     "keyPath": "/etc/pki/containers/goldenblue.pub",

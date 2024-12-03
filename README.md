@@ -11,24 +11,24 @@ With thanks to [uBlue](https://ublue.it/) and [Seraphim Strub](https://dev.rievo
 1. Install [Fedora Silverblue](https://fedoraproject.org/silverblue/) from bootable ISO.
 2. Log into Container Registry via Podman:
 ```sh
-sudo podman login git.infected.systems:5050
+run0 podman login git.infected.systems:5050
 ```
 3. Copy the `auth.json` so that `rpm-ostree` will find it:
 ```sh
-sudo cp -v /run/containers/0/auth.json /etc/ostree/auth.json
+run0 cp -v /run/containers/0/auth.json /etc/ostree/auth.json
 ```
 4. Reset our overlays (if we're using localisation then we might have packages that get automatically layered like `langpacks-en_GB`, which can cause problems when rebasing):
 ```sh
-sudo rpm-ostree reset
+run0 rpm-ostree reset
 ```
 5. Rebase to Goldenblue (without validating signatures, so we can import the sigs):
 ```sh
-sudo rpm-ostree rebase ostree-unverified-image:docker://git.infected.systems:5050/infectedsystems/goldenblue:40
+run0 rpm-ostree rebase ostree-unverified-image:docker://git.infected.systems:5050/infectedsystems/goldenblue:41
 ```
 6. Reboot
 7. Now we can switch to validating signatures on the Goldenblue image:
 ```sh
-sudo rpm-ostree rebase ostree-image-signed:docker://git.infected.systems:5050/infectedsystems/goldenblue:40
+run0 rpm-ostree rebase ostree-image-signed:docker://git.infected.systems:5050/infectedsystems/goldenblue:41
 ```
 5. Reboot
 
@@ -50,7 +50,7 @@ The BlackBox terminal emulator (installed via Flatpak by Yafti) is configured in
 ### Debugging
 To debug whether any core issues you are facing are part of a custom image or also exist upstream, you can temporarily rebase on the upstream Silverblue image like so:
 ```sh
-sudo rpm-ostree rebase ostree-image-signed:docker://quay.io/fedora/fedora-silverblue:40
+run0 rpm-ostree rebase ostree-image-signed:docker://quay.io/fedora/fedora-silverblue:40
 ```
 
 ### Caveats
